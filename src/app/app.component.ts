@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
+import { DividerModule } from 'primeng/divider';
+import { ChangeThemeBtnComponent } from "./components/change-theme-btn/change-theme-btn.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [ButtonModule, DividerModule, ChangeThemeBtnComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'blog-actividad-5';
+  title = 'Actividad 5 - Blog';
 }
