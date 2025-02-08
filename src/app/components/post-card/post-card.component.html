@@ -1,0 +1,14 @@
+<div class="group cursor-pointer" (click)="onPostSelected()">
+<div class="relative aspect-3/4">
+    <img [src]="post.image" class="object-cover" />
+    <div class="absolute h-24 p-2.5 bg-white/60 backdrop-blur-md w-full z-10 bottom-0 border-t border-white flex flex-col justify-center">
+        <span class="text-sm text-white font-medium">{{post.date | date}}</span>
+        <p class="text-white font-bold text-lg">{{post.author}}</p>
+    </div>
+</div>
+<div class="flex flex-col gap-5 mt-5">
+<h2 class="font-bold text-xl group-hover:underline">{{post.title}}</h2>
+<p>{{post.extract}}</p>
+
+</div>
+</div>

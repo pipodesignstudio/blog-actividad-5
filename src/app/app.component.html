@@ -1,7 +1,7 @@
 <!--   Barra superior   -->
-   <div class="fixed w-full p-2.5 border-b border-neutral-100 dark:border-neutral-700 bg-white dark:bg-neutral-900 backdrop-blur-md">
+   <div class="fixed z-10 w-full p-2.5 border-b border-neutral-100 dark:border-neutral-700 bg-white dark:bg-neutral-900 backdrop-blur-md">
      <div class="flex flex-row justify-between container mx-auto max-w-7xl">
-      <h1 class="font-bold text-3xl">Blog Full Stack</h1>
+      <h1 class="font-bold text-3xl">Blog</h1>
       <app-change-theme-btn />
      </div>
    </div>
@@ -13,5 +13,6 @@
        <p-button label="Nueva entrada" size="small" />
       </div>
       <p-divider />
+      <app-blog-list [blogPosts]="posts" />
    </div>
 <!--   Content   -->

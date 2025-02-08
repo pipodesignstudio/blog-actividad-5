@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-blog-form',
+  selector: 'app-blog-loading',
   imports: [],
-  templateUrl: './blog-form.component.html',
+  templateUrl: './blog-loading.component.html',
   styles: `
     :host {
       display: block;
@@ -11,4 +11,4 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BlogFormComponent { }
+export class BlogLoadingComponent { }

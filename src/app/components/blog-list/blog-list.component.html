@@ -1,1 +1,10 @@
-<p>blog-list works!</p>,
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+    @for (post of blogPosts; track $index) {
+        <app-post-card [post]="post" (handlePostSelected)="handlePostSelected($event)"/>
+    }
+</div>
+<p-dialog #dialog 
+(onHide)="handleUnselectPost()"
+ [modal]="true" [(visible)]="visible" [style]="{ width: '50rem' }" [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" [maximizable]="true">
+    <app-blog-post [post]="selectedPost" />
+</p-dialog>

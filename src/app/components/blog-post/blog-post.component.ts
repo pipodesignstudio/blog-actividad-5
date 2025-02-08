@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { BlogPost } from '../../interfaces';
 
 @Component({
   selector: 'app-blog-post',
@@ -11,4 +12,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BlogPostComponent { }
+export class BlogPostComponent { 
+  @Input() post: BlogPost | null = null;
+}

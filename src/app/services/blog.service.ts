@@ -3,7 +3,7 @@ import { initialData } from '../data/initial-data';
 import { BlogPost } from '../interfaces';
 
 @Injectable({providedIn: 'root'})
-export class BlogServiceService {
+export class BlogService {
 
     private readonly _sk = 'posts'; // sk por Storage Key
 
