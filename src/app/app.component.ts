@@ -5,10 +5,13 @@ import { ChangeThemeBtnComponent } from "./components/change-theme-btn/change-th
 import { BlogService } from './services';
 import { BlogPost } from './interfaces';
 import { BlogListComponent } from "./components/blog-list/blog-list.component";
+import { DialogModule } from 'primeng/dialog';
+import { NewPostFormComponent } from "./components/new-post-form/new-post-form.component";
+
 
 @Component({
   selector: 'app-root',
-  imports: [ButtonModule, DividerModule, ChangeThemeBtnComponent, BlogListComponent],
+  imports: [ButtonModule, DividerModule, ChangeThemeBtnComponent, BlogListComponent, DialogModule, NewPostFormComponent],
   templateUrl: './app.component.html',
 })
 export class AppComponent {
@@ -17,6 +20,7 @@ export class AppComponent {
   private bs = inject(BlogService);
   public posts:BlogPost[] = [];
   public isLoading = signal<boolean>(true);
+  public showingNewPostModal = false;
 
   ngOnInit(): void {
     setTimeout(() => {

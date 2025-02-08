@@ -10,9 +10,14 @@
    <div class="container mx-auto max-w-7xl md:py-36 py-28 px-2.5 overflow-y-auto">
      <div class="flex flex-row justify-between">
        <h1 class="font-bold md:text-3xl text-2xl">Publicaciones recientes</h1>
-       <p-button label="Nueva entrada" size="small" />
+       <p-button label="Nueva entrada" size="small" (onClick)="showingNewPostModal = true" />
       </div>
       <p-divider />
       <app-blog-list [blogPosts]="posts" />
    </div>
 <!--   Content   -->
+<!--   Nueva entrada   -->
+<p-dialog header="Edit Profile" [modal]="true" [(visible)]="showingNewPostModal" [style]="{ width: '50rem' }">
+   <app-new-post-form />
+</p-dialog>
+<!--   Nueva entrada   -->
