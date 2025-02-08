@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, inject, signal, ViewChild } from '@angular/core';
 import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { BlogService } from '../../services';
@@ -19,14 +19,17 @@ import { MessageModule } from 'primeng/message';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NewPostFormComponent { 
+  @ViewChild('imagePicker') imagePicker!: ElementRef<HTMLInputElement>;
+
 
   private fb = inject(FormBuilder);
   private bs = inject(BlogService);
+  private cd = inject(ChangeDetectorRef);
 
-  public selectedCoverImag:string | null = null;
+  public selectedCoverImage = signal<string | null>(null);
 
   public newPostForm = this.fb.group({
-    image: [, Validators.required],
+    image: [ '', Validators.required],
     title: ['', [Validators.required, Validators.minLength(5)]],
     author: ['', [Validators.required, Validators.minLength(5)]],
     date: [, [Validators.required]],
@@ -34,9 +37,30 @@ export class NewPostFormComponent {
     content: ['', [Validators.required, Validators.minLength(150)]],
   });
   
-  onFileSelected(event:any) {
-    const file:File = event.target.files[0];
-    console.log(this.newPostForm.value)
+  onFileSelected(event: Event) {
+    const target = event.target as HTMLInputElement;
+    if (!target.files?.length) return;
+  
+    const file = target.files[0];
+
+    
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+      this.newPostForm.patchValue({
+        image: reader.result as string,
+      });
+    }
+
+  }
+
+  removeImage() {
+    this.newPostForm.get('image')?.setValue(''); // Limpia el control de imagen
+    this.selectedCoverImage.set(null);
+    if (this.imagePicker) {
+      this.imagePicker.nativeElement.value = ''; // Reset del input file
+    }
   }
 
 
