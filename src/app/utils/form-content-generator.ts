@@ -1,0 +1,3 @@
+export const generatePostContent = ():string => {
+    return `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id vestibulum arcu. Sed ac quam imperdiet, porttitor ex sed, ullamcorper nulla. Nam ullamcorper risus quis scelerisque posuere. Nulla venenatis in quam eget sodales. Etiam ante diam, aliquam et dui eu, suscipit pulvinar lorem. Nulla hendrerit purus et nisl finibus blandit. Mauris sit amet mauris elit. Sed interdum dui lectus, malesuada hendrerit ante pulvinar nec. Aenean tincidunt diam nec urna ullamcorper, a tristique erat bibendum. Duis vitae eleifend metus, quis condimentum leo. Nam et fermentum turpis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi in ipsum.`;
+}

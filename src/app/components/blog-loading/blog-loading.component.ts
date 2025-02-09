@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-
+import { SkeletonModule } from 'primeng/skeleton';
 @Component({
   selector: 'app-blog-loading',
-  imports: [],
+  imports: [SkeletonModule],
   templateUrl: './blog-loading.component.html',
   styles: `
     :host {

@@ -1,5 +1,5 @@
 <!--   Barra superior   -->
-   <div class="fixed z-10 w-full p-2.5 border-b border-neutral-100 dark:border-neutral-700 bg-white dark:bg-neutral-900 backdrop-blur-md">
+   <div class="fixed z-20 w-full p-2.5 border-b border-neutral-100 dark:border-neutral-700 bg-white/60 dark:bg-neutral-900/60 backdrop-blur-md">
      <div class="flex flex-row justify-between container mx-auto max-w-7xl">
       <h1 class="font-bold text-3xl">Blog</h1>
       <app-change-theme-btn />
@@ -7,17 +7,21 @@
    </div>
 <!--   Barra superior   -->
 <!--   Content   -->
-   <div class="container mx-auto max-w-7xl md:py-36 py-28 px-2.5 overflow-y-auto">
+   <div class="container mx-auto max-w-7xl md:py-36 py-28 px-2.5 overflow-y-auto z-10">
      <div class="flex flex-row justify-between">
        <h1 class="font-bold md:text-3xl text-2xl">Publicaciones recientes</h1>
        <p-button label="Nueva entrada" size="small" (onClick)="showingNewPostModal = true" />
       </div>
       <p-divider />
-      <app-blog-list [blogPosts]="posts" />
+      @if (isLoading()) {
+         <app-blog-loading />
+      } @else {
+         <app-blog-list [blogPosts]="posts" />
+      }
    </div>
 <!--   Content   -->
 <!--   Nueva entrada   -->
-<p-dialog header="Edit Profile" [modal]="true" [(visible)]="showingNewPostModal" [style]="{ width: '50rem' }">
-   <app-new-post-form />
+<p-dialog #newPostDialog header="Nueva entrada" [modal]="true" [(visible)]="showingNewPostModal" [style]="{ width: '50rem' }">
+   <app-new-post-form (handleNewPost)="onNewPost($event)" />
 </p-dialog>
 <!--   Nueva entrada   -->

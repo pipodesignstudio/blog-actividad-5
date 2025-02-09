@@ -1,3 +1,16 @@
 <div class="flex flex-col gap-5">
-    <img [src]="post?.image" class="rounded-md object-cover" />
+  <img [src]="post?.image" class="rounded-md object-cover" />
+  <h2 class="font-bold text-3xl">{{ post?.title }}</h2>
+  <div class="flex flex-col gap-1">
+    <p class="text-sm text-neutral-500 dark:text-neutral-400">
+      {{ post?.author }}
+    </p>
+    <p class="text-sm text-neutral-500 dark:text-neutral-400">
+      {{ post?.date | date }}
+    </p>
+  </div>
+  <p-divider />
+  <p class="text-lg text-neutral-700 dark:text-neutral-200">
+    {{ post?.content }}
+  </p>
 </div>

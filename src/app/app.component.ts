@@ -7,11 +7,12 @@ import { BlogPost } from './interfaces';
 import { BlogListComponent } from "./components/blog-list/blog-list.component";
 import { DialogModule } from 'primeng/dialog';
 import { NewPostFormComponent } from "./components/new-post-form/new-post-form.component";
+import { BlogLoadingComponent } from './components/blog-loading/blog-loading.component';
 
 
 @Component({
   selector: 'app-root',
-  imports: [ButtonModule, DividerModule, ChangeThemeBtnComponent, BlogListComponent, DialogModule, NewPostFormComponent],
+  imports: [ButtonModule, BlogLoadingComponent, DividerModule, ChangeThemeBtnComponent, BlogListComponent, DialogModule, NewPostFormComponent],
   templateUrl: './app.component.html',
 })
 export class AppComponent {
@@ -25,7 +26,17 @@ export class AppComponent {
   ngOnInit(): void {
     setTimeout(() => {
       this.posts = this.bs.getPosts();
+      this.isLoading.set(false);
     }, 1000) // Añado un segundo para simular un fecth a BBDD y mostrar pantalla de carga 
+  }
+
+  onNewPost(event:{status:'ok' | 'ko', error:string|null}) {
+    if(event.status === 'ok') {
+      this.showingNewPostModal = false;
+      this.posts = this.bs.getPosts();
+    } else {
+      console.error('Error al crear el post:', event.error);
+    }
   }
 
 }

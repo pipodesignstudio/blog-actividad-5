@@ -1,9 +1,11 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { BlogPost } from '../../interfaces';
+import { CommonModule } from '@angular/common';
+import { DividerModule } from 'primeng/divider';
 
 @Component({
   selector: 'app-blog-post',
-  imports: [],
+  imports: [CommonModule, DividerModule],
   templateUrl: './blog-post.component.html',
   styles: `
     :host {
