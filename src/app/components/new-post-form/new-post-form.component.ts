@@ -56,12 +56,19 @@ export class NewPostFormComponent {
   });
 
   public previewCover = signal<string | null>(null);
+  public sizeMaxError = signal<boolean>(false);
 
   onFileSelected(event: Event) {
+    this.sizeMaxError.set(false);
     const target = event.target as HTMLInputElement;
     if (!target.files?.length) return;
 
     const file = target.files[0];
+
+    if (file.size > 1024 * 360) {
+      this.sizeMaxError.set(true);
+      return;
+    }
 
     const reader = new FileReader();
 

@@ -26,7 +26,7 @@ export class BlogService {
     
       addPost(post: BlogPost): void {
         const posts = this.getPosts();
-        posts.push(post);
+        posts.unshift(post);
         localStorage.setItem(this._sk, JSON.stringify(posts));
       }
 

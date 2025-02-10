@@ -11,6 +11,11 @@
             
           <p>Selecciona una imagen</p>
       </div>
+      @if(this.sizeMaxError()) {
+        <p-message severity="error">
+          El tamaño de la imagen no puede superar los 360kb
+        </p-message>
+      }
 
     } @else {
       <div class="cursor-pointer w-full h-64 relative">
